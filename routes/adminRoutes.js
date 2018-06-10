@@ -2,12 +2,13 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var User = require('../models/User');
-var Image = require('../models/Image');
-var Station = require('../models/Station');
-var Member = require('../models/Member');
+var Request = require('../models/Request');
+
+var Branch = require('../models/Branch');
+
 var flash = require('connect-flash');
- var cloudinary = require('cloudinary');
-  var multer = require('multer'); 
+var cloudinary = require('cloudinary');
+var multer = require('multer'); 
 
 
 router.get('/AdminPortal',isAdmin,function(req,res){

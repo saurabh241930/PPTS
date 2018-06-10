@@ -1,35 +1,36 @@
-var  methodOverride = require('method-override'),
-         bodyParser = require('body-parser'),
-           mongoose = require('mongoose'),
-            express = require('express'),
-              flash = require('connect-flash'),
+var methodOverride = require('method-override'),
+  bodyParser = require('body-parser'),
+  mongoose = require('mongoose'),
+  express = require('express'),
+  flash = require('connect-flash'),
+  passport = require('passport'),
+  LocalStrategy = require('passport-local'),
 
-               User = require('./models/User'),
-              Image = require('./models/Image'),
-             Member = require('./models/Member'),
-            Station = require('./models/Station'),
-           passport = require('passport'),
-      LocalStrategy = require('passport-local'),
-        
-                app = express();
+  app = express();
 
 
-       
-  var  authRoutes = require('./routes/index');
-  var  adminRoutes = require('./routes/adminRoutes');
-  var cloudinary = require('cloudinary');
-  var multer = require('multer'); 
+
+var authRoutes = require('./routes/index');
+var adminRoutes = require('./routes/adminRoutes');
+var cloudinary = require('cloudinary');
+var multer = require('multer')
+
+var User = require('./models/User');
+var Request = require('./models/Request');
+
+var Branch = require('./models/Branch');
+
 
 
 //seedDB(); //Seed the database
 
 //================================================PASSPORT CONFIGURATION==================================================//
 
- cloudinary.config({ 
- cloud_name: 'dxotafsfa', 
- api_key: '247743586122155', 
- api_secret: 'lRSmFwRap_LS-tKzXQqgdqhv8Xo' 
- }); 
+cloudinary.config({
+  cloud_name: 'dxotafsfa',
+  api_key: '247743586122155',
+  api_secret: 'lRSmFwRap_LS-tKzXQqgdqhv8Xo'
+});
 
 
 
@@ -51,7 +52,7 @@ passport.deserializeUser(User.deserializeUser());
 
 
 /////passing "currentUser" to every template/////////////////
-app.use(function(req,res,next){
+app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
   next();
 })
@@ -60,14 +61,18 @@ app.use(function(req,res,next){
 
 
 
-   //==================================================APP CONFIG=========================================================//
-   mongoose.Promise = global.Promise;
-   mongoose.connect('mongodb://localhost/PPTS', { useMongoClient: true, });
-   app.set('view engine','ejs');
-   app.use(express.static(__dirname +'/public'));
-   app.use(bodyParser.urlencoded({extended:true}));
-   app.use(methodOverride('_method'));
-  //===================================================APP CONFIG==========================================================//
+//==================================================APP CONFIG=========================================================//
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/PPTS', {
+  useMongoClient: true,
+});
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(methodOverride('_method'));
+//===================================================APP CONFIG==========================================================//
 
 
 
@@ -76,14 +81,14 @@ app.use(function(req,res,next){
 //     if (err) {
 //       console.log(err);
 //     } else {
-    
+
 //       if(main.length === 0){
 //         Main.create({
 //         Description:"Description of CSI"
 //      })
 //       }
-      
-      
+
+
 //     }
 //   })
 ///Default event creation///
@@ -104,22 +109,22 @@ app.use(function(req,res,next){
 
 
 
-    
 
 
 
-  
+
+
 //==============ADDING DATA================//
 
 //==================================================RESTFUL ROUTES=========================================================//
 
 
 
- app.use(authRoutes);
- app.use(adminRoutes);
+app.use(authRoutes);
+app.use(adminRoutes);
 
 
 
-app.listen(3000, function () {
+app.listen(3000, function() {
   console.log('Server started');
 });
