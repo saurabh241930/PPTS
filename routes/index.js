@@ -11,17 +11,69 @@ var Branch = require('../models/Branch');
 
 
 router.get('/', function(req, res) {
-
-
   res.render('index')
-
-
 });
 
 
 
+router.get('/apply',function(req,res){
+      Branch.find({},function(err,branches){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('applyForm',{branches:branches});
+        }
+  })
+})
 
 
+router.post('/apply/:id',function(req,res){
+      User.findById(req.params.id,function(err,user){
+    if (err) {
+      console.log(err);
+    } else {
+      
+     Branch.findById(req.body.preference1,function(err,branch){
+       if (err) {
+        console.log(err)
+      } else {
+        
+        var newRequest = {
+          id:user._id,
+          username:user.username,
+          fullName:user.fullName,
+          Location:user.Location,
+          email:user.email,
+          profileImage:user.profileImage,
+          requestedBranch:{
+            Location:branch.Location,
+            id:branch._id,
+            BranchName:branch.BranchName
+          }
+        }
+        
+        
+        Request.create(newRequest,function(err,newestRequest){
+          if (err) {
+            console.log(err)
+          } else {
+            
+            user.request.preference1.id = req.body.preference1;
+            user.save()
+            
+          }
+        })
+        
+        
+      }
+     }) 
+      
+      
+      
+        }
+  })
+})
 
 
 
@@ -107,6 +159,8 @@ router.get('/branches/Palghar',function(req,res){
         }
   })
 })
+
+
 
 
 

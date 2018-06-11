@@ -17,6 +17,89 @@ var UserSchema = new mongoose.Schema({
     Location:String
   },
   
+  request:{
+    preference1:{
+      id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Branch"
+    },
+      BranchName:String
+    },
+    
+     preference2:{
+      id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Branch"
+    },
+      BranchName:String
+    },
+    
+     preference3:{
+      id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Branch"
+    },
+      BranchName:String
+    },
+    
+     preference4:{
+      id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Branch"
+    },
+      BranchName:String
+    },
+    
+     preference5:{
+      id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Branch"
+    },
+      BranchName:String
+    },
+    
+    preference6:{
+      id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Branch"
+    },
+      BranchName:String
+    },
+    
+     preference7:{
+      id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Branch"
+    },
+      BranchName:String
+    },
+    
+     preference8:{
+      id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Branch"
+    },
+      BranchName:String
+    },
+    
+     preference9:{
+      id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Branch"
+    },
+      BranchName:String
+    },
+    
+     preference10:{
+      id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Branch"
+    },
+      BranchName:String
+    }
+    
+  }
+  
 
 }, {
   usePushEach: true

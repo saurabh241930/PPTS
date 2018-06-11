@@ -18,38 +18,16 @@ var BranchSchema = new mongoose.Schema({
     email: String,
     profileImage: String
   }],
-  Requests: [{
-
+  
+  Requests:{
     id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User"
+      ref: "Request"
     },
-    username: String,
-    fullName: String,
-    branch: String,
-    email: String,
-    profileImage: String,
-    requestedBranch: {
-      id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Request"
-      },
-      BranchName: String,
-      RequestedCreatedOn: {
-        type: Date,
-        default: Date.now
-      },
-      Accepted: {
-        type: Boolean,
-        default: false
-      }
-
-    }
-
-
-
-  }]
-
+    
+    
+  }
+  
 
 }, {
   usePushEach: true
