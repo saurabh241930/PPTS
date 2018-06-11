@@ -70,20 +70,41 @@
           
           <p>Select the staion :</p>
       <div class="col col-xl-2 col-lg-2 col-md-9 col-sm-9 col-xs-12" style="background-color:white;">      
-<ul style="list-style-type: none;text-align:center;width:200px;">
-            <a class="list-group-item" href="/branches/vasai"><li >Vasai / वसई</li></a>
-             <a class="list-group-item" href="/branches/vasai"><li >Nalasophara</li></a>
-            <a class="list-group-item" href="/branches/vasai"><li >Vasai</li></a>
-             <a class="list-group-item" href="/branches/vasai"><li >Vasai</li></a>
-             <a class="list-group-item" href="/branches/vasai"><li >Vasai</li></a>
-             <a class="list-group-item" href="/branches/vasai"><li >Vasai</li></a>
-            
+<ul style="list-style-type: none;text-align:center;width:200px;margin-right:50px">
+  
+  
+  
+  
+  <a class="list-group-item <%if(location=="Vasai"){%>active<%}%>" href="/branches/Vasai"><li >Vasai</li></a>
+  <a class="list-group-item <%if(location=="Nalasophara"){%>active<%}%>" href="/branches/Nalasophara"><li >Nalasophara</li></a>
+  <a class="list-group-item <%if(location=="Virar"){%>active<%}%>" href="/branches/Virar"><li >Virar</li></a>
+  <a class="list-group-item <%if(location=="Vaitarna"){%>active<%}%>" href="/branches/Vaitarna"><li >Vaitarna</li></a>
+  <a class="list-group-item <%if(location=="Saphale"){%>active<%}%>" href="/branches/Saphale"><li ></li>Saphale</a>
+  <a class="list-group-item <%if(location=="KelvaRoad"){%>active<%}%>" href="/branches/KelvaRoad"><li >Kelva Road</li></a>
+  <a class="list-group-item <%if(location=="Palghar"){%>active<%}%>" href="/branches/Palghar"><li >Palghar</li></a>
+    
             
 </ul>
         
       </div>
+ 
+          
+          
       
-      
+          <div class="col col-xl-10 col-lg-10 col-md-9 col-sm-9 col-xs-12"
+               style="background-color:#E2E1E0;height:100%;text-align:center"> 
+          
+<%branches.forEach(function(branch){%>
+            
+  <div style="height:100px;
+              width:100%;
+              margin-top:10px;
+              background-color:white;
+              border-radius:2px;
+              box-shadow: 0 2px 2px rgba(0,0,0,0.19), 0 2px 2px rgba(0,0,0,0.21);"><p><%=branch.BranchName%></p></div>         
+
+<%})%>
+      </div>
     </div>
     
     

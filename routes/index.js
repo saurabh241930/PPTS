@@ -30,13 +30,83 @@ router.get('/homepage', function(req, res) {
 });
 
 
+router.get('/branches/Vasai',function(req,res){
+      Branch.find({'Location':'Vasai'},function(err,branches){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('branchesPage',{branches:branches,location:"Vasai"});
+        }
+  })
+})
+
+router.get('/branches/Nalasophara',function(req,res){
+      Branch.find({'Location':'Nalasophara'},function(err,branches){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('branchesPage',{branches:branches,location:"Nalasophara"});
+        }
+  })
+})
+
+router.get('/branches/Virar',function(req,res){
+      Branch.find({'Location':'Virar'},function(err,branches){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('branchesPage',{branches:branches,location:"Virar"});
+        }
+  })
+})
+
+router.get('/branches/Vaitarna',function(req,res){
+      Branch.find({'Location':'Vaitarna'},function(err,branches){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('branchesPage',{branches:branches,location:"Vaitarna"});
+        }
+  })
+})
+
+router.get('/branches/Saphale',function(req,res){
+      Branch.find({'Location':'Saphale'},function(err,branches){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('branchesPage',{branches:branches,location:"Saphale"});
+        }
+  })
+})
+
+router.get('/branches/KelvaRoad',function(req,res){
+      Branch.find({'Location':'KelvaRoad'},function(err,branches){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('branchesPage',{branches:branches,location:"KelvaRoad"});
+        }
+  })
+})
 
 
-
-
-
-
-
+router.get('/branches/Palghar',function(req,res){
+      Branch.find({'Location':'Palghar'},function(err,branches){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('branchesPage',{branches:branches,location:"Palghar"});
+        }
+  })
+})
 
 
 
@@ -105,8 +175,7 @@ router.post('/createBranch', function(req, res) {
     BranchName: req.body.BranchName,
     TotalSeats: req.body.TotalSeats,
   }
-  
-  
+ 
   Branch.create(newBranch,function(err,branch){
     if (err) {
       console.log(err)
