@@ -38,12 +38,12 @@
         
         <ul class="list-group" style="text-align:center;margin-left:18px;margin-top:20px">
   <li class="list-group-item list-group-item-info" style="width:100%"><strong style="float:left">*Name / नाॉव : </strong><br>
-    <span style="font-size:16px;color:black"><%=currentUser.username%></span></li>
+    <span style="font-size:16px;color:black"><%=currentUser.fullName%></span></li>
    <li class="list-group-item list-group-item-info"><strong style="float:left">*Phone No. / फोन : </strong><br>
-    <span style="font-size:17px;color:black">8097448698</span></li>
+    <span style="font-size:17px;color:black"><%=currentUser.username%></span></li>
    
    <li class="list-group-item list-group-item-info"><strong style="float:left">*Branch / शाखा : </strong><br>
-    <span style="font-size:17px;color:black">Bhayander</span></li>
+    <span style="font-size:17px;color:black"><%=currentUser.currentBranch.BranchName%></span></li>
           <li class="list-group-item list-group">
       <a type="button" class="btn btn-success">View complete profile <i class="fa fa-arrow-right"></i></a>
 </li>  

@@ -19,14 +19,15 @@ var BranchSchema = new mongoose.Schema({
     profileImage: String
   }],
   
-  Requests:{
+  Requests:[{
     id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Request"
     },
+    BranchName:String,
+    preference:Number
     
-    
-  }
+  }]
   
 
 }, {

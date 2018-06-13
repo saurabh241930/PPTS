@@ -10,9 +10,18 @@ var Branch = require('../models/Branch');
 
 
 
-router.get('/', function(req, res) {
-  res.render('index')
-});
+
+
+router.get('/',function(req,res){
+      Branch.find({},function(err,branches){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('index',{branches:branches});
+        }
+  })
+})
 
 
 
@@ -28,54 +37,478 @@ router.get('/apply',function(req,res){
 })
 
 
-router.post('/apply/:id',function(req,res){
-      User.findById(req.params.id,function(err,user){
+router.post('/apply/:id', function(req, res) {
+  User.findById(req.params.id, function(err, user) {
     if (err) {
       console.log(err);
     } else {
-      
-     Branch.findById(req.body.preference1,function(err,branch){
-       if (err) {
-        console.log(err)
-      } else {
-        
-        var newRequest = {
-          id:user._id,
-          username:user.username,
-          fullName:user.fullName,
-          Location:user.Location,
-          email:user.email,
-          profileImage:user.profileImage,
-          requestedBranch:{
-            Location:branch.Location,
-            id:branch._id,
-            BranchName:branch.BranchName
+
+      Branch.findById(req.body.preference1, function(err, branch) {
+        if (err) {
+          console.log(err)
+        } else {
+
+          var newRequest = {
+            id: user._id,
+            username: user.username,
+            fullName: user.fullName,
+            Location: user.Location,
+            email: user.email,
+            profileImage: user.profileImage,
+            preference: 1,
+            requestedBranch: {
+              Location: branch.Location,
+              id: branch._id,
+              BranchName: branch.BranchName
+            }
           }
+
+
+          Request.create(newRequest, function(err, newestRequest) {
+            if (err) {
+              console.log(err)
+            } else {
+
+              user.request.preference1.id = req.body.preference1;
+              user.save()
+
+              var requestInBranch = {
+                id: newestRequest._id,
+                BranchName: branch.BranchName,
+                preference: newestRequest.preference
+              }
+
+              branch.Requests.push(requestInBranch);
+              branch.save()
+              
+
+            }
+          })
+
+
         }
-        
-        
-        Request.create(newRequest,function(err,newestRequest){
-          if (err) {
-            console.log(err)
-          } else {
-            
-            user.request.preference1.id = req.body.preference1;
-            user.save()
-            
+      })
+
+      Branch.findById(req.body.preference2, function(err, branch) {
+        if (err) {
+          console.log(err)
+        } else {
+
+          var newRequest = {
+            id: user._id,
+            username: user.username,
+            fullName: user.fullName,
+            Location: user.Location,
+            email: user.email,
+            profileImage: user.profileImage,
+            preference: 2,
+            requestedBranch: {
+              Location: branch.Location,
+              id: branch._id,
+              BranchName: branch.BranchName
+            }
           }
-        })
-        
-        
-      }
-     }) 
-      
-      
-      
+
+
+          Request.create(newRequest, function(err, newestRequest) {
+            if (err) {
+              console.log(err)
+            } else {
+
+              user.request.preference2.id = req.body.preference2;
+              user.save()
+
+              var requestInBranch = {
+                id: newestRequest._id,
+                BranchName: branch.BranchName,
+                preference: newestRequest.preference
+              }
+
+              branch.Requests.push(requestInBranch);
+              branch.save()
+              
+
+            }
+          })
+
+
         }
+      })
+
+      Branch.findById(req.body.preference3, function(err, branch) {
+        if (err) {
+          console.log(err)
+        } else {
+
+          var newRequest = {
+            id: user._id,
+            username: user.username,
+            fullName: user.fullName,
+            Location: user.Location,
+            email: user.email,
+            profileImage: user.profileImage,
+            preference: 3,
+            requestedBranch: {
+              Location: branch.Location,
+              id: branch._id,
+              BranchName: branch.BranchName
+            }
+          }
+
+
+          Request.create(newRequest, function(err, newestRequest) {
+            if (err) {
+              console.log(err)
+            } else {
+
+              user.request.preference3.id = req.body.preference3;
+              user.save()
+
+              var requestInBranch = {
+                id: newestRequest._id,
+                BranchName: branch.BranchName,
+                preference: newestRequest.preference
+              }
+
+              branch.Requests.push(requestInBranch);
+              branch.save()
+              
+
+            }
+          })
+
+
+        }
+      })
+
+      Branch.findById(req.body.preference4, function(err, branch) {
+        if (err) {
+          console.log(err)
+        } else {
+
+          var newRequest = {
+            id: user._id,
+            username: user.username,
+            fullName: user.fullName,
+            Location: user.Location,
+            email: user.email,
+            profileImage: user.profileImage,
+            preference: 4,
+            requestedBranch: {
+              Location: branch.Location,
+              id: branch._id,
+              BranchName: branch.BranchName
+            }
+          }
+
+
+          Request.create(newRequest, function(err, newestRequest) {
+            if (err) {
+              console.log(err)
+            } else {
+
+              user.request.preference4.id = req.body.preference4;
+              user.save()
+
+              var requestInBranch = {
+                id: newestRequest._id,
+                BranchName: branch.BranchName,
+                preference: newestRequest.preference
+              }
+
+              branch.Requests.push(requestInBranch);
+              branch.save()
+              
+
+            }
+          })
+
+
+        }
+      })
+      
+      Branch.findById(req.body.preference5, function(err, branch) {
+        if (err) {
+          console.log(err)
+        } else {
+
+          var newRequest = {
+            id: user._id,
+            username: user.username,
+            fullName: user.fullName,
+            Location: user.Location,
+            email: user.email,
+            profileImage: user.profileImage,
+            preference: 1,
+            requestedBranch: {
+              Location: branch.Location,
+              id: branch._id,
+              BranchName: branch.BranchName
+            }
+          }
+
+
+          Request.create(newRequest, function(err, newestRequest) {
+            if (err) {
+              console.log(err)
+            } else {
+
+              user.request.preference5.id = req.body.preference5;
+              user.save()
+
+              var requestInBranch = {
+                id: newestRequest._id,
+                BranchName: branch.BranchName,
+                preference: newestRequest.preference
+              }
+
+              branch.Requests.push(requestInBranch);
+              branch.save()
+              
+
+            }
+          })
+
+
+        }
+      })
+
+      Branch.findById(req.body.preference6, function(err, branch) {
+        if (err) {
+          console.log(err)
+        } else {
+
+          var newRequest = {
+            id: user._id,
+            username: user.username,
+            fullName: user.fullName,
+            Location: user.Location,
+            email: user.email,
+            profileImage: user.profileImage,
+            preference: 6,
+            requestedBranch: {
+              Location: branch.Location,
+              id: branch._id,
+              BranchName: branch.BranchName
+            }
+          }
+
+
+          Request.create(newRequest, function(err, newestRequest) {
+            if (err) {
+              console.log(err)
+            } else {
+
+              user.request.preference6.id = req.body.preference6;
+              user.save()
+
+              var requestInBranch = {
+                id: newestRequest._id,
+                BranchName: branch.BranchName,
+                preference: newestRequest.preference
+              }
+
+              branch.Requests.push(requestInBranch);
+              branch.save()
+              
+
+            }
+          })
+
+
+        }
+      })
+
+      Branch.findById(req.body.preference7, function(err, branch) {
+        if (err) {
+          console.log(err)
+        } else {
+
+          var newRequest = {
+            id: user._id,
+            username: user.username,
+            fullName: user.fullName,
+            Location: user.Location,
+            email: user.email,
+            profileImage: user.profileImage,
+            preference: 7,
+            requestedBranch: {
+              Location: branch.Location,
+              id: branch._id,
+              BranchName: branch.BranchName
+            }
+          }
+
+
+          Request.create(newRequest, function(err, newestRequest) {
+            if (err) {
+              console.log(err)
+            } else {
+
+              user.request.preference7.id = req.body.preference7;
+              user.save()
+
+              var requestInBranch = {
+                id: newestRequest._id,
+                BranchName: branch.BranchName,
+                preference: newestRequest.preference
+              }
+
+              branch.Requests.push(requestInBranch);
+              branch.save()
+              
+
+            }
+          })
+
+
+        }
+      })
+
+      Branch.findById(req.body.preference8, function(err, branch) {
+        if (err) {
+          console.log(err)
+        } else {
+
+          var newRequest = {
+            id: user._id,
+            username: user.username,
+            fullName: user.fullName,
+            Location: user.Location,
+            email: user.email,
+            profileImage: user.profileImage,
+            preference: 8,
+            requestedBranch: {
+              Location: branch.Location,
+              id: branch._id,
+              BranchName: branch.BranchName
+            }
+          }
+
+
+          Request.create(newRequest, function(err, newestRequest) {
+            if (err) {
+              console.log(err)
+            } else {
+
+              user.request.preference8.id = req.body.preference8;
+              user.save()
+
+              var requestInBranch = {
+                id: newestRequest._id,
+                BranchName: branch.BranchName,
+                preference: newestRequest.preference
+              }
+
+              branch.Requests.push(requestInBranch);
+              branch.save()
+              
+
+            }
+          })
+
+
+        }
+      })
+      
+      Branch.findById(req.body.preference9, function(err, branch) {
+        if (err) {
+          console.log(err)
+        } else {
+
+          var newRequest = {
+            id: user._id,
+            username: user.username,
+            fullName: user.fullName,
+            Location: user.Location,
+            email: user.email,
+            profileImage: user.profileImage,
+            preference: 9,
+            requestedBranch: {
+              Location: branch.Location,
+              id: branch._id,
+              BranchName: branch.BranchName
+            }
+          }
+
+
+          Request.create(newRequest, function(err, newestRequest) {
+            if (err) {
+              console.log(err)
+            } else {
+
+              user.request.preference9.id = req.body.preference9;
+              user.save()
+
+              var requestInBranch = {
+                id: newestRequest._id,
+                BranchName: branch.BranchName,
+                preference: newestRequest.preference
+              }
+
+              branch.Requests.push(requestInBranch);
+              branch.save()
+              
+
+            }
+          })
+
+
+        }
+      })
+
+      Branch.findById(req.body.preference10, function(err, branch) {
+        if (err) {
+          console.log(err)
+        } else {
+
+          var newRequest = {
+            id: user._id,
+            username: user.username,
+            fullName: user.fullName,
+            Location: user.Location,
+            email: user.email,
+            profileImage: user.profileImage,
+            preference: 10,
+            requestedBranch: {
+              Location: branch.Location,
+              id: branch._id,
+              BranchName: branch.BranchName
+            }
+          }
+
+
+          Request.create(newRequest, function(err, newestRequest) {
+            if (err) {
+              console.log(err)
+            } else {
+
+              user.request.preference10.id = req.body.preference10;
+              user.save()
+
+              var requestInBranch = {
+                id: newestRequest._id,
+                BranchName: branch.BranchName,
+                preference: newestRequest.preference
+              }
+
+              branch.Requests.push(requestInBranch);
+              branch.save()
+              
+
+            }
+          })
+        res.redirect("/")
+
+        }
+      })
+
+
+
+
+    }
   })
 })
-
-
 
 router.get('/homepage', function(req, res) {
   res.render('homepage')
@@ -148,7 +581,6 @@ router.get('/branches/KelvaRoad',function(req,res){
   })
 })
 
-
 router.get('/branches/Palghar',function(req,res){
       Branch.find({'Location':'Palghar'},function(err,branches){
     if (err) {
@@ -175,14 +607,24 @@ router.get('/register', function(req, res) {
 
 //Sign Up logic
 router.post('/register', function(req, res) {
-  var newUser = new User({
-    username: req.body.username
-  });
-
-
-
-
-  User.register(newUser, req.body.password, function(err, user) {
+  
+  Branch.findById(req.body.branchId,function(err,branch){
+    if (err) {
+      console.log(err)
+    } else {
+      
+       var newUser = new User({
+    username: req.body.username,
+    fullName: req.body.fullName,
+       email: req.body.email,
+  currentBranch:{
+           id:branch._id,
+           BranchName:branch.BranchName,
+           Location:branch.Location
+         } 
+  })
+       
+       User.register(newUser, req.body.password, function(err, user) {
     if (err) {
       console.log(err);
       return res.render('register');
@@ -194,6 +636,17 @@ router.post('/register', function(req, res) {
 
   })
 
+      
+    }
+  })
+  
+  
+ 
+
+
+
+
+  
 });
 
 

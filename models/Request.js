@@ -14,6 +14,7 @@ var RequestSchema = new mongoose.Schema({
     branch: String,
     email: String,
     profileImage: String,
+    preference:Number,
     requestedBranch: {
       Location:String,
       id: {
