@@ -32,6 +32,13 @@ router.get('/',function(req,res){
   })
 })
 
+router.get('/status',function(req,res){
+     
+      
+      res.render('status');
+       
+})
+
 router.get('/homepage',function(req,res){
       Branch.find({},function(err,branches){
     if (err) {
