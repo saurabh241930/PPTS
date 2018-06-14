@@ -28,12 +28,15 @@
                                                                             border-right:solid 1px #ccc
                                                                             ">
         
-        <img src="http://howrahruralpolice.gov.in/images/sphowrah.jpg" alt="" 
+   
+        <img src="https://en.indietrainers.com/media/images/empty-profile.png" alt="" 
              style="height:238px;width:238px;border-radius:100%;border:solid 10px #2d2d2d"><br>
         
    <a type="button" class="btn btn-primary" style="opacity:0.9;
-                                                   margin-top:-50px;
-                                                   background-color:rgba(0,0,0,0.4)">edit profile</a>
+                                                   margin-top:-60px;
+                                                   background-color:rgba(40,96,144,0.7);
+                                                   margin-right:-20px;
+                                                   ">Add Profile Image</a>
      
         
         <ul class="list-group" style="text-align:center;margin-left:18px;margin-top:20px">
@@ -70,7 +73,7 @@
           
           <p>Select the staion :</p>
    
-          <div class="col col-xl-9 col-lg-9 col-md-9 col-sm-9 col-xs-12">
+          <div class="col col-xl-9 col-lg-6 col-md-9 col-sm-9 col-xs-12">
             
             <form action="/apply/<%=currentUser._id%>" method="POST">
   
@@ -80,6 +83,7 @@
   <div class="form-group">
     <label for="preference1">Preference 1</label>
     <select class="form-control" id="preference1" name="preference1">
+      <option value=""></option>
       <%branches.forEach(function(branch){%>
       <option value ="<%=branch._id%>"><%=branch.BranchName%></option>
      <%})%>
@@ -89,6 +93,7 @@
    <div class="form-group">
     <label for="preference2">Preference 2</label>
     <select class="form-control" id="preference2" name="preference2">
+      <option value=""></option>
       <%branches.forEach(function(branch){%>
       <option value ="<%=branch._id%>"><%=branch.BranchName%></option>
      <%})%>
@@ -99,6 +104,7 @@
      <div class="form-group">
     <label for="preference3">Preference 3</label>
     <select class="form-control" id="preference3" name="preference3">
+      <option value=""></option>
       <%branches.forEach(function(branch){%>
       <option value ="<%=branch._id%>"><%=branch.BranchName%></option>
      <%})%>
@@ -109,6 +115,7 @@
     <div class="form-group">
     <label for="preference4">Preference 4</label>
     <select class="form-control" id="preference4" name="preference4">
+      <option value=""></option>
       <%branches.forEach(function(branch){%>
       <option value ="<%=branch._id%>"><%=branch.BranchName%></option>
      <%})%>
@@ -118,6 +125,7 @@
      <div class="form-group">
     <label for="preference5">Preference 5</label>
     <select class="form-control" id="preference5" name="preference5">
+      <option value=""></option>
       <%branches.forEach(function(branch){%>
       <option value ="<%=branch._id%>"><%=branch.BranchName%></option>
      <%})%>
@@ -130,6 +138,7 @@
   <div class="form-group">
     <label for="preference6">Preference 6</label>
     <select class="form-control" id="preference6" name="preference6">
+      <option value=""></option>
       <%branches.forEach(function(branch){%>
       <option value ="<%=branch._id%>"><%=branch.BranchName%></option>
      <%})%>
@@ -139,6 +148,7 @@
    <div class="form-group">
     <label for="preference7">Preference 7</label>
     <select class="form-control" id="preference7" name="preference7">
+      <option value=""></option>
       <%branches.forEach(function(branch){%>
       <option value ="<%=branch._id%>"><%=branch.BranchName%></option>
      <%})%>
@@ -149,6 +159,7 @@
      <div class="form-group">
     <label for="preference8">Preference 8</label>
     <select class="form-control" id="preference8" name="preference8">
+      <option value=""></option>
       <%branches.forEach(function(branch){%>
       <option value ="<%=branch._id%>"><%=branch.BranchName%></option>
      <%})%>
@@ -159,6 +170,7 @@
     <div class="form-group">
     <label for="preference9">Preference 9</label>
     <select class="form-control" id="preference9" name="preference9">
+      <option value=""></option>
       <%branches.forEach(function(branch){%>
       <option value ="<%=branch._id%>"><%=branch.BranchName%></option>
      <%})%>
@@ -168,6 +180,7 @@
      <div class="form-group">
     <label for="preference10">Preference 10</label>
     <select class="form-control" id="preference10" name="preference10">
+      <option value=""></option>
       <%branches.forEach(function(branch){%>
       <option value ="<%=branch._id%>"><%=branch.BranchName%></option>
      <%})%>
@@ -179,10 +192,7 @@
               
                
               
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
+ 
     
     <button type="submit" class="btn btn-primary btn-lg btn-block">Submit The Apply Form</button>
               

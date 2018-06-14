@@ -1,14 +1,23 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var methodOverride = require('method-override');
+var multer = require('multer');     
+var path = require('path');
+var fs = require('fs');
+
+var upload = multer({ dest: 'uploads/' });
+var util = require('util');
+var cloudinary = require('cloudinary');
+
+var Branch = require('../models/Branch');
 var User = require('../models/User');
 var Request = require('../models/Request');
 
-var Branch = require('../models/Branch');
 
 
 
-
+ var upload = multer({ dest: './uploads/'});
 
 
 
@@ -23,7 +32,16 @@ router.get('/',function(req,res){
   })
 })
 
-
+router.get('/homepage',function(req,res){
+      Branch.find({},function(err,branches){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('homepage',{branches:branches});
+        }
+  })
+})
 
 router.get('/apply',function(req,res){
       Branch.find({},function(err,branches){
@@ -239,7 +257,7 @@ router.post('/apply/:id', function(req, res) {
             Location: user.Location,
             email: user.email,
             profileImage: user.profileImage,
-            preference: 1,
+            preference: 5,
             requestedBranch: {
               Location: branch.Location,
               id: branch._id,
@@ -510,11 +528,6 @@ router.post('/apply/:id', function(req, res) {
   })
 })
 
-router.get('/homepage', function(req, res) {
-  res.render('homepage')
-});
-
-
 router.get('/branches/Vasai',function(req,res){
       Branch.find({'Location':'Vasai'},function(err,branches){
     if (err) {
@@ -606,7 +619,9 @@ router.get('/register', function(req, res) {
 });
 
 //Sign Up logic
-router.post('/register', function(req, res) {
+router.post('/register', upload.single('profileImage'),function(req, res) {
+  
+  
   
   Branch.findById(req.body.branchId,function(err,branch){
     if (err) {
@@ -630,10 +645,22 @@ router.post('/register', function(req, res) {
       return res.render('register');
     } else {
       passport.authenticate("local")(req, res, function() {
-        res.redirect('/');
+        
       })
     }
-
+       
+        var newMember = {
+          id:user._id,
+          username:user.username,
+          fullName:user.fullName,
+          email:user.email,
+          profileImage:user.profileImage
+        } 
+        
+        branch.Members.push(newMember);
+         branch.save()
+         
+         res.redirect('/');
   })
 
       

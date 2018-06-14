@@ -28,12 +28,14 @@
                                                                             border-right:solid 1px #ccc
                                                                             ">
         
-        <img src="http://howrahruralpolice.gov.in/images/sphowrah.jpg" alt="" 
+     <img src="https://en.indietrainers.com/media/images/empty-profile.png" alt="" 
              style="height:238px;width:238px;border-radius:100%;border:solid 10px #2d2d2d"><br>
         
    <a type="button" class="btn btn-primary" style="opacity:0.9;
-                                                   margin-top:-50px;
-                                                   background-color:rgba(0,0,0,0.4)">edit profile</a>
+                                                   margin-top:-60px;
+                                                   background-color:rgba(40,96,144,0.7);
+                                                   margin-right:-20px;
+                                                   ">Add Profile Image</a>
      
         
         <ul class="list-group" style="text-align:center;margin-left:18px;margin-top:20px">
@@ -74,7 +76,7 @@
   
   
   
-  
+   <a class="list-group-item"  href="/homepage"><li >All Stations</li></a>
   <a class="list-group-item <%if(location=="Vasai"){%>active<%}%>" href="/branches/Vasai"><li>Vasai</li></a>
   <a class="list-group-item <%if(location=="Nalasophara"){%>active<%}%>" href="/branches/Nalasophara"><li >Nalasophara</li></a>
   <a class="list-group-item <%if(location=="Virar"){%>active<%}%>" href="/branches/Virar"><li >Virar</li></a>
@@ -96,14 +98,20 @@
           
 <%branches.forEach(function(branch){%>
             
-  <div style="height:100px;
-              width:100%;
-              margin-top:10px;
-              background-color:rgb(64, 155, 57);
-              background-color:rgba(201, 52, 52,0.8);
-              border-radius:2px;
-              "><p><strong style="float:left;color:white;font-size:25px"><%=branch.BranchName%></strong></p></div>         
-
+ <div class="col col-xl-12 col-lg-12 col-md-4 col-sm-6 col-xs-12">
+    
+    <div style="border:solid 1px #ccc;margin-top:20px;">
+      <i class="fa fa-university" style="font-size:70px;margin-top:50px"></i>
+         <p><strong style="color:black;font-size:20px">
+      <%=branch.BranchName%></strong></p><br>
+    <span style="font-size:17px">
+      <span style="color:blue">Location : </span><%=branch.Location%></span><br><br><br>
+    
+    <span style="font-size:15px">
+      <span style="color:green">Vacancy : </span>Not Available</span>
+    </div>
+ 
+        </div> 
 <%})%>
       </div>
     </div>

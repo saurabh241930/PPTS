@@ -28,12 +28,14 @@
                                                                             border-right:solid 1px #ccc
                                                                             ">
         
-        <img src="http://howrahruralpolice.gov.in/images/sphowrah.jpg" alt="" 
+        <img src="https://en.indietrainers.com/media/images/empty-profile.png" alt="" 
              style="height:238px;width:238px;border-radius:100%;border:solid 10px #2d2d2d"><br>
         
    <a type="button" class="btn btn-primary" style="opacity:0.9;
-                                                   margin-top:-50px;
-                                                   background-color:rgba(0,0,0,0.4)">edit profile</a>
+                                                   margin-top:-60px;
+                                                   background-color:rgba(40,96,144,0.7);
+                                                   margin-right:-20px;
+                                                   ">Add Profile Image</a>
      
         
         <ul class="list-group" style="text-align:center;margin-left:18px;margin-top:20px">
@@ -52,12 +54,18 @@
         
         <div style="">
           <div class="btn-group-vertical" >
-  <button type="button" class="btn btn-primary">Apply <i class="fa fa-arrow-right"></i></button>
+ <button id="Apply" type="button" class="btn btn-primary">Apply <i class="fa fa-arrow-right"></i></button>
 <button type="button" class="btn btn-primary">Status <i class="fa fa-user-cog"></i></button>
 <button type="button" class="btn btn-primary">Notifications <i class="fa fa-bell"></i></button>
 <button type="button" class="btn btn-danger">Logout <i class="fa fa-sign-out"></i></button>
 </div>
         </div>
+        
+   <script>
+     $('#Apply').click(function(){
+   window.location.href='/apply';
+})
+        </script>     
         
       </div>
       
@@ -70,7 +78,8 @@
           
           <p>Select the staion :</p>
       <div class="col col-xl-2 col-lg-2 col-md-9 col-sm-9 col-xs-12" style="background-color:white;">      
-<ul style="list-style-type: none;text-align:center;width:200px;">
+<ul style="list-style-type: none;text-align:center;width:200px;margin-left:-50px">
+  <a class="list-group-item active"  href="/homepage"><li >All Stations</li></a>
   <a class="list-group-item"  href="/branches/Vasai"><li >Vasai</li></a>
   <a class="list-group-item" href="/branches/Nalasophara"><li >Nalasophara</li></a>
   <a class="list-group-item" href="/branches/Virar"><li >Virar</li></a>
@@ -83,7 +92,31 @@
 </ul>
         
       </div>
-      
+          
+          
+      <div class="col col-xl-10 col-lg-10 col-md-9 col-sm-9 col-xs-12"
+               style="background-color:white;height:100%;text-align:center"> 
+          
+<%branches.forEach(function(branch){%>
+            
+  <div class="col col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    
+    <div style="border:solid 1px #ccc;margin-top:20px;">
+      <i class="fa fa-university" style="font-size:70px;margin-top:50px"></i>
+         <p><strong style="color:black;font-size:20px">
+      <%=branch.BranchName%></strong></p><br>
+    <span style="font-size:17px">
+      <span style="color:blue">Location : </span><%=branch.Location%></span><br><br><br>
+    
+    <span style="font-size:15px">
+      <span style="color:green">Vacancy : </span>Not Available</span>
+    </div>
+ 
+        </div>         
+
+<%})%>
+      </div>
+     
       
     </div>
     
