@@ -94,12 +94,20 @@ router.post('/apply/:id', function(req, res) {
               console.log(err)
             } else {
 
-              user.request.preference1.id = req.body.preference1;
+              var requestInUser = {
+                id: newestRequest._id,
+                BranchName: branch.BranchName,
+                preference: newestRequest.preference,
+
+
+              }
+
+              user.requests.push(requestInUser)
               user.save()
 
               var requestInBranch = {
                 id: newestRequest._id,
-                BranchName: branch.BranchName,
+                By:newRequest.fullName,
                 preference: newestRequest.preference
               }
 
@@ -621,9 +629,16 @@ router.get('/branches/Palghar',function(req,res){
 
 //////////////////////////////////////////AUTH ROUTES////////////////////////////////////////
 //register
-router.get('/register', function(req, res) {
-  res.render('register');
-});
+router.get('/register',function(req,res){
+  Branch.find({},function(err,branches){
+if (err) {
+  console.log(err);
+} else {
+  
+  res.render('register',{branches:branches});
+    }
+})
+})
 
 //Sign Up logic
 router.post('/register', upload.single('profileImage'),function(req, res) {
@@ -721,7 +736,7 @@ router.post('/createBranch', function(req, res) {
     if (err) {
       console.log(err)
     } else {
-      res.redirect("/")
+      res.redirect("/createBranch")
     }
   })
   

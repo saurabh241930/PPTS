@@ -23,7 +23,7 @@ var BranchSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Request"
     },
-    BranchName:String,
+    By:String,
     preference:Number
     
   }]
