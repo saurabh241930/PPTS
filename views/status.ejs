@@ -89,7 +89,13 @@
      <span style="float:right;font-size:30px"><strong >Request approved</strong>  </span>
           </div>        
           
-          
+       <h1>your request</h1>   
+
+       <%requests.forEach(function(request){%>
+        
+      <p><button disabled="disabled"><%=request.preference%></button>
+        <%=request.requestedBranch.BranchName%></p>
+      <% })%>
           
       
 

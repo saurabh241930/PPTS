@@ -17,14 +17,6 @@ var UserSchema = new mongoose.Schema({
     Location:String
   },
   
-  requests:[{
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Request"
-    },
-    preference:Number,
-    BranchName:String
-  }],
   
   requestSubmittedOn:Date
 

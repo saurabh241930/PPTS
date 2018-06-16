@@ -33,9 +33,16 @@ router.get('/',function(req,res){
 })
 
 router.get('/status',function(req,res){
-     
+  Request.find({'id':req.user._id}).sort({preference:1}).exec(function(err,requests){
+    if (err) {
+      console.log(err);
+    } else {
       
-      res.render('status');
+      res.render('status',{requests:requests});
+        }
+  })
+      
+      
        
 })
 
@@ -94,16 +101,7 @@ router.post('/apply/:id', function(req, res) {
               console.log(err)
             } else {
 
-              var requestInUser = {
-                id: newestRequest._id,
-                BranchName: branch.BranchName,
-                preference: newestRequest.preference,
-
-
-              }
-
-              user.requests.push(requestInUser)
-              user.save()
+            
 
               var requestInBranch = {
                 id: newestRequest._id,
@@ -148,12 +146,11 @@ router.post('/apply/:id', function(req, res) {
               console.log(err)
             } else {
 
-              user.request.preference2.id = req.body.preference2;
-              user.save()
+             
 
               var requestInBranch = {
                 id: newestRequest._id,
-                BranchName: branch.BranchName,
+                By:newRequest.fullName,
                 preference: newestRequest.preference
               }
 
@@ -194,12 +191,11 @@ router.post('/apply/:id', function(req, res) {
               console.log(err)
             } else {
 
-              user.request.preference3.id = req.body.preference3;
-              user.save()
+      
 
               var requestInBranch = {
                 id: newestRequest._id,
-                BranchName: branch.BranchName,
+                By:newRequest.fullName,
                 preference: newestRequest.preference
               }
 
@@ -240,12 +236,10 @@ router.post('/apply/:id', function(req, res) {
               console.log(err)
             } else {
 
-              user.request.preference4.id = req.body.preference4;
-              user.save()
 
               var requestInBranch = {
                 id: newestRequest._id,
-                BranchName: branch.BranchName,
+                By:newRequest.fullName,
                 preference: newestRequest.preference
               }
 
@@ -259,7 +253,7 @@ router.post('/apply/:id', function(req, res) {
 
         }
       })
-      
+
       Branch.findById(req.body.preference5, function(err, branch) {
         if (err) {
           console.log(err)
@@ -286,12 +280,11 @@ router.post('/apply/:id', function(req, res) {
               console.log(err)
             } else {
 
-              user.request.preference5.id = req.body.preference5;
-              user.save()
+        
 
               var requestInBranch = {
                 id: newestRequest._id,
-                BranchName: branch.BranchName,
+                By:newRequest.fullName,
                 preference: newestRequest.preference
               }
 
@@ -332,12 +325,10 @@ router.post('/apply/:id', function(req, res) {
               console.log(err)
             } else {
 
-              user.request.preference6.id = req.body.preference6;
-              user.save()
 
               var requestInBranch = {
                 id: newestRequest._id,
-                BranchName: branch.BranchName,
+                By:newRequest.fullName,
                 preference: newestRequest.preference
               }
 
@@ -378,12 +369,11 @@ router.post('/apply/:id', function(req, res) {
               console.log(err)
             } else {
 
-              user.request.preference7.id = req.body.preference7;
-              user.save()
+           
 
               var requestInBranch = {
                 id: newestRequest._id,
-                BranchName: branch.BranchName,
+                By:newRequest.fullName,
                 preference: newestRequest.preference
               }
 
@@ -424,12 +414,11 @@ router.post('/apply/:id', function(req, res) {
               console.log(err)
             } else {
 
-              user.request.preference8.id = req.body.preference8;
-              user.save()
+         
 
               var requestInBranch = {
                 id: newestRequest._id,
-                BranchName: branch.BranchName,
+                By:newRequest.fullName,
                 preference: newestRequest.preference
               }
 
@@ -443,7 +432,7 @@ router.post('/apply/:id', function(req, res) {
 
         }
       })
-      
+
       Branch.findById(req.body.preference9, function(err, branch) {
         if (err) {
           console.log(err)
@@ -470,12 +459,11 @@ router.post('/apply/:id', function(req, res) {
               console.log(err)
             } else {
 
-              user.request.preference9.id = req.body.preference9;
-              user.save()
+             
 
               var requestInBranch = {
                 id: newestRequest._id,
-                BranchName: branch.BranchName,
+                By:newRequest.fullName,
                 preference: newestRequest.preference
               }
 
@@ -516,12 +504,11 @@ router.post('/apply/:id', function(req, res) {
               console.log(err)
             } else {
 
-              user.request.preference10.id = req.body.preference10;
-              user.save()
+             
 
               var requestInBranch = {
                 id: newestRequest._id,
-                BranchName: branch.BranchName,
+                By:newRequest.fullName,
                 preference: newestRequest.preference
               }
 
@@ -531,12 +518,12 @@ router.post('/apply/:id', function(req, res) {
 
             }
           })
-        res.redirect("/")
+
 
         }
       })
 
-
+    res.redirect("/homepage")
 
 
     }
