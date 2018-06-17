@@ -11,18 +11,16 @@ var cloudinary = require('cloudinary');
 var multer = require('multer'); 
 
 
-router.get('/AdminPortal',isAdmin,function(req,res){
+router.get('/authoritySide',function(req,res){
 
-      User.find({},function(err,members){
-    if (err) {
-      console.log(err);
-    } else {
       
-      res.render('adminPage',{members:members});
-        }
-  })
+      res.render('authoritySide');
 
-})
+
+  })
+ 
+
+
 
 
 
