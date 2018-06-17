@@ -98,30 +98,43 @@
      <span style="float:right;font-size:20px"><strong >Request approved</strong>  </span>
           </div>        
           
-<<<<<<< HEAD
-       <h1>your request</h1>   
 
-       <%requests.forEach(function(request){%>
-        
-      <p><button disabled="disabled"><%=request.preference%></button>
-        <%=request.requestedBranch.BranchName%></p>
-      <% })%>
-          
-=======
-       
-       <div class="alert alert-success" role="alert" style="margin-top:100px">
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis cum ut distinctio 
-         sed suscipit tempore libero cumque. Minima ullam possimus modi magnam, quibusdam nam
-         qui, suscipit itaque rerum impedit necessitatibus!
          
-         <div class="alert alert-danger" role="alert">
-  A simple danger alert—check it out!
-</div>
+
+       
+        
+      
+     <div class="col col-lg-3">
+          
+
+
+
+       
+       <div class="alert alert-success" role="alert" style="margin-top:10px">
+     <table class="table" style="font-size: 12px">
+    <thead>
+      <tr>
+        <th>Preference</th>
+        <th>Branch</th>   
+      </tr>
+    </thead>
+    <tbody>
+      <%requests.forEach(function(request){%>
+      <tr>
+        <td><%=request.preference%></td>
+        <td><%=request.requestedBranch.BranchName%></td>
+      </tr>  
+       <% })%>    
+    </tbody>
+  </table>
+         
 </div>      
->>>>>>> 79c7bb4af06e2c3284b3a6f46d44b48fec8c268f
+
       
 
       </div>
+</div>
+
      
       
     </div>
