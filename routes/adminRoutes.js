@@ -20,11 +20,80 @@ router.get('/authoritySide',function(req,res){
   })
  
 
+router.get('/authorityRegistration',function(req,res){
+
+      
+      res.render('registerAuthority');
+
+
+  })
+
+
+router.post('/registerAuthority',function(req,res){
+    
+    var enteredPhoneNumber = req.body.username;
+    var registeredPhoneNumbers = ["9876543210","1234567890","8097448698","9988776655"]
+
+    
+      
+     if (registeredPhoneNumbers.some(x => x === enteredPhoneNumber)) {
+          
+              var newUser = new User({
+    username: req.body.username,
+    fullName: req.body.fullName,
+       email: req.body.email,
+    Location: req.body.Location,
+     isAdmin: true
+  })
+
+         User.register(newUser, req.body.password, function(err, user) {
+    if (err) {
+      console.log(err);
+      return res.render('register');
+    } else {
+      passport.authenticate("local")(req, res, function() {
+        res.redirect("/authoritySide")
+      })
+    }
+
+     })
+
+
+  }
+})
 
 
 
 
 
+router.post('/authorize', passport.authenticate("local", {
+  successRedirect: "/regionwiseRequests",
+  failureRedirect: "/"
+}), function(req, res) {
+
+});
+
+
+router.get('/regionwiseRequests',function(req,res){
+
+User.findById(req.user._id,function(err,user){
+  if (err) {
+    console.log(err)
+  } else {
+     Request.find({"Location":user.Location}).sort({preference:1}).exec(function(err,requests){
+    if (err) {
+      console.log(err);
+    } else {
+         console.log(requests);
+         res.render("regionwiseRequests",{requests:requests})
+  
+        }
+  })
+  }
+})
+
+  
+})
 
 
 

@@ -148,20 +148,62 @@ span.input-group-addon i {
 			<div class="row main">
 				<div class="main-login main-center" style="background-color: black">
 				<h5>Select your region and enter your password</h5>
-					<form class="" method="post" action="/authorize">
+					<form class="" method="POST" action="/registerAuthority">
 						
+						
+
 						<div class="form-group">
-							<label for="username" class="cols-sm-2 control-label">Enter your Registered No.</label>
+							
+							<div class="cols-sm-10">
+								<div class="input-group" style="width: 100%">
+
+
+
+
+                                        <label for="branch">Select your region</label>
+                                        <select class="form-control" id="branch" name="Location">
+                                         
+                                          <option value="Vasai">Vasai</option>
+										  <option value="Nalasophara">Nalasophara</option>
+										  <option value="Virar">Virar</option>
+										  <option value="Vaitarna">Vaitarna</option>
+										  <option value="Saphale">Saphale</option>
+										  <option value="Kelva Road">Kelva Road</option>
+										  <option value="Plaghar">Plaghar</option>
+                                        
+                                        </select>
+									</div>
+
+                                 <div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Your Name</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="username" id="password"  placeholder="Enter your Phone No."/>
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="fullName" id="name"  placeholder="Enter your Name"/>
 								</div>
 							</div>
 						</div>
 
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Your Email</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-at fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+								</div>
+							</div>
+						</div>
 
-						
+						<div class="form-group">
+							<label for="username" class="cols-sm-2 control-label">Phone Number</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-mobile fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Phone Number"/>
+								</div>
+							</div>
+						</div>
+
 						<div class="form-group">
 							<label for="password" class="cols-sm-2 control-label">Password</label>
 							<div class="cols-sm-10">
@@ -172,8 +214,13 @@ span.input-group-addon i {
 							</div>
 						</div>
 
+							</div>
+						</div>
+
+						
+
 						<div class="form-group ">
-							<button class="btn btn-danger btn-lg btn-block">Open Authority Side</button>
+							<button class="btn btn-danger btn-lg btn-block">Register as authority</button>
 						</div>
 						
 					</form>

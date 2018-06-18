@@ -8,6 +8,12 @@ var UserSchema = new mongoose.Schema({
   fullName: String,
   email: String,
   profileImage: String,
+  Location:String,
+  isAdmin:{
+            type:Boolean,
+            default:false
+          },
+
   currentBranch: {
     id: {
       type: mongoose.Schema.Types.ObjectId,
